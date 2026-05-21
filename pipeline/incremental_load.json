@@ -162,9 +162,16 @@
 							"typeProperties": {
 								"dataset": {
 									"referenceName": "Parquet1",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"container": "bronze",
+										"file": {
+											"value": "@concat(pipeline().parameters.table,'_',variables('getdate'))",
+											"type": "Expression"
+										}
+									}
 								},
-								"enableLogging": true,
+								"enableLogging": false,
 								"storeSettings": {
 									"type": "AzureBlobFSReadSettings",
 									"recursive": true,
